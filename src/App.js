@@ -12,17 +12,15 @@ export class App extends React.Component {
     badIngredientsInProduct: []
   }
   checkIngredients = (list) => {
-    let array = [];
+    let detectedBadIngredients = [];
     for (var i = 0; i < this.state.badIngredients.length; i++) {
-      if (list.includes(this.state.badIngredients[i])) {
-        array.push(this.state.badIngredients[i]);
+      if (list.includes(this.state.badIngredients[i].toUpperCase())) {
+        detectedBadIngredients.push(this.state.badIngredients[i]);
       }
     }
-    for (var j = 0; j < array.length; j++) {
-      console.log(array[j]);
-    }
+    console.log(detectedBadIngredients);
     this.setState(prevState => ({
-      badIngredientsInProduct: [...array]
+      badIngredientsInProduct: [...detectedBadIngredients]
     }));
   }
   submitForm = (e) => {
