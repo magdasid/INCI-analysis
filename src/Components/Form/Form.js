@@ -1,9 +1,10 @@
 import React from 'react';
+import Button from '../Button/Button.js';
 
 const Form = ({submitForm}) => (
   <form onSubmit={submitForm}>
     <textarea></textarea>
-    <button>Check</button>
+    <Button>Check</Button>
   </form>
 );
 
