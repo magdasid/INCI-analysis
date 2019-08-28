@@ -9,7 +9,7 @@ const initialBadIngredients = ["DMDM", "DMDM Hydrantoin", "MDM Hydantoin", "Form
 export class App extends React.Component {
   state = {
     badIngredients: [...initialBadIngredients],
-    badIngredientsInProduct: []
+    badIngredientsInProduct: null
   }
   checkIngredients = (list) => {
     let detectedBadIngredients = [];
@@ -35,9 +35,12 @@ export class App extends React.Component {
         <Form
           submitForm={this.submitForm}
         />
-        <Wrapper
-          ingredients={this.state.badIngredientsInProduct}
-        />
+        { this.state.badIngredientsInProduct ?
+          <Wrapper
+            ingredients={this.state.badIngredientsInProduct}
+          />
+          : null
+        }
       </div>
     );
   }

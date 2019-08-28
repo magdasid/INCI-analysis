@@ -1,19 +1,23 @@
 import React from 'react';
 import ListItem from './ListItem/ListItem.js';
+import Title from '../Title/Title.js';
 
 const Wrapper = ({ingredients}) => (
-  ingredients.length === 0 ? (
-    <h1>Brak złych składników</h1>
+  <>
+  { ingredients.length === 0 ? (
+    <Title>Brak złych składników</Title>
   ) : (
     <>
-      <h1>Lista złych składników w produkcie</h1>
+      <Title>Lista złych składników w produkcie</Title>
       <ul>
         {ingredients.map(item => (
           <ListItem key={item} name={item}/>
         ))}
       </ul>
     </>
-  )
+    )
+  }
+  </>
 );
 
 export default Wrapper;
