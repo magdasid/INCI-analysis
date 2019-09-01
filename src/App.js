@@ -32,7 +32,7 @@ export class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>halo</h1>
+        <h1>halo halo</h1>
         <Form
           submitForm={this.submitForm}
         />
