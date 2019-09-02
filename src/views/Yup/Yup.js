@@ -16,18 +16,41 @@ let schema = yup.object().shape({
 });
 
 export class Yup extends React.Component {
-  checkSchema = () => {
+  state = {
+    validForm: ''
+  }
+  checkSchema = (e) => {
+    e.preventDefault();
+
     schema.isValid({
-      name: 'jimmy',
-      age: 24,
-      email: 45
-    }).then(function(valid) {
-      console.log(valid);
+      name: e.target[0].value,
+      age: e.target[1].value,
+      email: e.target[2].value
+    }).then((valid) => {
+      if (valid) {
+        this.setState({
+          validForm: 'ok'
+        });
+      } else {
+        this.setState({
+          validForm: 'zle'
+        });
+      }
     });
   }
   render() {
     return (
-        <button onClick={this.checkSchema}>check schema</button>
+      <>
+        <form onSubmit={this.checkSchema}>
+          <input placeholder="name" type="text" name="name" />
+          <input placeholder="age" type="text" name="age" />
+          <input placeholder="email" type="text" name="email" />
+          <button type="submit">
+            Submit
+          </button>
+        </form>
+        <p>{this.state.validForm}</p>
+      </>
     );
   }
 }
