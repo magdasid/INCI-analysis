@@ -1,12 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Form from './Components/Form/Form.js';
-import Wrapper from './Components/Wrapper/Wrapper.js'
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Form from '../Components/Form/Form.js';
+import List from '../Components/List/List.js';
+import Navigation from '../Components/Navigation/Navigation.js';
+import CheckProductView from './CheckProductView/CheckProductView.js';
+import Yup from './Yup/Yup.js';
+import FormView from './FormView/FormView.js';
 
 const initialBadIngredients = ["DMDM", "DMDM Hydrantoin", "MDM Hydantoin", "Formaldehyde", "BHA", "BHT"];
 
-export class App extends React.Component {
+export class Root extends React.Component {
   state = {
     badIngredients: [...initialBadIngredients],
     badIngredientsInProduct: null
@@ -31,19 +34,18 @@ export class App extends React.Component {
   }
   render() {
     return (
-      <div>
-        <Form
-          submitForm={this.submitForm}
-        />
-        { this.state.badIngredientsInProduct ?
-          <Wrapper
-            ingredients={this.state.badIngredientsInProduct}
-          />
-          : null
-        }
-      </div>
+      <BrowserRouter>
+        <>
+          <Navigation />
+          <Switch>
+            <Route exact path="/" component={CheckProductView}/>
+            <Route path="/ingredients" component={Yup}/>
+            <Route path="/form" component={FormView}/>
+          </Switch>
+        </>
+      </BrowserRouter>
     );
   }
 }
 
-export default App;
+export default Root;

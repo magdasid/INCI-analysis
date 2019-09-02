@@ -2,7 +2,7 @@ import React from 'react';
 import ListItem from './ListItem/ListItem.js';
 import Title from '../Title/Title.js';
 
-const Wrapper = ({ingredients}) => (
+const List = ({ingredients}) => (
   <>
   { ingredients.length === 0 ? (
     <Title>Brak złych składników</Title>
@@ -20,4 +20,4 @@ const Wrapper = ({ingredients}) => (
   </>
 );
 
-export default Wrapper;
+export default List;
